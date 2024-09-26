@@ -25,7 +25,7 @@ public class Sale {
     @Column(length = 10)
     private Long salePrice;
 
-    @DateTimeFormat(pattern = "yyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     @Column(length = 15)
     private Date saleDate;
 

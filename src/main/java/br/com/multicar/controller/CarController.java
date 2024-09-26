@@ -46,6 +46,11 @@ public class CarController {
         return carService.getAllCars(page, size, sortBy);
     }
 
+    @GetMapping(value = "/test")
+    public String test() {
+        return "endpoint acessado";
+    }
+
 
 
 }
