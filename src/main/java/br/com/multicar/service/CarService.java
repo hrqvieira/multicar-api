@@ -4,6 +4,7 @@ import br.com.multicar.entity.Car;
 import br.com.multicar.exeption.ModelNullException;
 import br.com.multicar.exeption.SellerNullExeption;
 import br.com.multicar.repository.ICarRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,8 +24,12 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public void deleteCar(long id){
-       carRepository.deleteById(id);
+    public void deleteCar(long id) {
+        if (carRepository.existsById(id)) {
+            carRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Car with ID " + id + " not found.");
+        }
     }
 
     public Car getCarById(long id){
@@ -35,5 +40,6 @@ public class CarService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return carRepository.findAll(pageable);
     }
+
 
 }
