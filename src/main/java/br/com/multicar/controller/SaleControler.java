@@ -19,11 +19,8 @@ public class SaleControler {
 
     @PostMapping(value="/save")
     public ResponseEntity<Sale> saveSale(@RequestBody Sale sale) throws Exception {
-
         sale = saleService.save(sale);
-
         return ResponseEntity.ok(sale);
-
     }
 
 }

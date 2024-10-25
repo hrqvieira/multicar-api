@@ -13,7 +13,6 @@ public class AuthService {
         this.jwtService = jwtService;
     }
 
-
     public String authenticate(Authentication authentication) {
         return jwtService.generateToken(authentication);
     }

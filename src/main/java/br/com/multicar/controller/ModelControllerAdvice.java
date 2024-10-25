@@ -16,22 +16,17 @@ public class ModelControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ModelNullException.class)
     public ResponseEntity<Object> catchModelNull(){
-
         Map<String, Object> body = new HashMap<String, Object>();
-
         body.put("error", "campo model esta vazio");
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
-
     }
 
     @ExceptionHandler(SellerNullExeption.class)
+
     public ResponseEntity<Object> catchSellerNull(){
 
         Map<String, Object> body = new HashMap<String, Object>();
-
         body.put("error", "campo seller esta vazio");
-
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
 
     }

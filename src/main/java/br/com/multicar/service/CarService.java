@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class CarService {
 
@@ -39,6 +41,11 @@ public class CarService {
     public Page<Car> getAllCars(int page, int size, String sortBy){
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return carRepository.findAll(pageable);
+    }
+
+    public Page<Car> getCarByModel(String model, int page, int size, String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return carRepository.findByModel(model, pageable);
     }
 
 
